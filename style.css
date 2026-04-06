@@ -283,32 +283,34 @@ img {
   opacity: 0.2;
 }
 
-/* Features */
-/* Features Autoscroll */
+/* Features Slider */
 .features-slider-container {
-  overflow: hidden;
-  padding: 40px 0;
+  position: relative;
   width: 100%;
 }
 
-.features-track {
+.features-slider {
   display: flex;
+  overflow-x: auto;
   gap: 30px;
-  width: max-content;
-  animation: scroll-features 40s linear infinite;
+  padding: 40px 0;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.features-slider::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }
 
 .impact-card {
   flex: 0 0 300px;
+  scroll-snap-align: center;
 }
 
-@keyframes scroll-features {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-330px * 4)); } /* Adjust based on card width + gap */
-}
-
-.features-track:hover {
-  animation-play-state: paused;
+.features-slider .feature-card {
+  height: 100%;
 }
 
 .feature-card {
@@ -481,7 +483,6 @@ img {
 }
 
 .slider-item {
-  flex: 0 0 340px;
   scroll-snap-align: center;
 }
 
@@ -567,6 +568,7 @@ img {
 
 /* Video Testimonials */
 .video-testimonial-card {
+  flex: 0 0 340px;
   background: var(--white);
   border-radius: var(--radius);
   overflow: hidden;
